@@ -1,0 +1,173 @@
+[
+  {
+    "screenId": "8e0fa56e6f1a464f8e6187bc66ac5716",
+    "screenTitle": "Game Settings - MagnetMaze Lite",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Close Settings",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "RESET TO DEFAULTS",
+        "line": 289
+      },
+      {
+        "type": "button",
+        "label": "RETURN TO GAME",
+        "line": 291
+      },
+      {
+        "type": "button",
+        "label": "SAVE CHANGES",
+        "line": 294
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 197
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 209
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 233
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 244
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 254
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Close Settings",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "RESET TO DEFAULTS",
+        "line": 289
+      },
+      {
+        "type": "button",
+        "label": "RETURN TO GAME",
+        "line": 291
+      },
+      {
+        "type": "button",
+        "label": "SAVE CHANGES",
+        "line": 294
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 197
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 209
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 233
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 244
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 254
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 9,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b1d58f9dac9746d78cd567cea94e2f7f",
+    "screenTitle": "Gameplay - MagnetMaze Lite",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "restart_alt",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 217
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "restart_alt",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "START GAME",
+        "line": 217
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
