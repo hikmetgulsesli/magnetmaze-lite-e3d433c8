@@ -14,12 +14,26 @@ export type GameplayMagnetmazeLiteActionId = "restart-alt-1" | "pause-2" | "sett
 
 export interface GameplayMagnetmazeLiteProps {
   actions?: Partial<Record<GameplayMagnetmazeLiteActionId, () => void>>;
-  runtime?: { player?: { lane?: number; position?: number }; obstacles?: Array<{ lane?: number; position?: number }>; shards?: Array<{ lane?: number; position?: number }>; score?: number; energy?: number; lives?: number; paused?: boolean };
+  runtime?: { player?: { lane?: number; position?: number }; obstacles?: Array<{ lane?: number; position?: number }>; shards?: Array<{ lane?: number; position?: number }>; score?: number; energy?: number; lives?: number; paused?: boolean; status?: "idle" | "running" | "paused" | "gameOver" };
 
 }
 
 export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeLiteProps) {
-  void runtime;
+  const score = runtime?.score ?? 0;
+  const energy = runtime?.energy ?? 100;
+  const lives = Math.max(0, Math.min(3, runtime?.lives ?? 3));
+  const status = runtime?.status ?? (runtime?.paused ? "paused" : "idle");
+  const showStartOverlay = status === "idle" || status === "gameOver";
+  const playerLane = Math.max(0, Math.min(2, runtime?.player?.lane ?? 1));
+  const playerProgress = Math.max(0, Math.min(12, runtime?.player?.position ?? 0));
+  const playerLeft = `${20 + playerLane * 30}%`;
+  const playerTop = `${82 - playerProgress * 5}%`;
+  const obstaclePositions = runtime?.obstacles ?? [];
+  const shardPositions = runtime?.shards ?? [];
+
+  const laneLeft = (lane = 1) => `${20 + Math.max(0, Math.min(2, lane)) * 30}%`;
+  const trackTop = (position = 0) => `${82 - Math.max(0, Math.min(12, position)) * 5}%`;
+
   return (
     <>
       {/* The Void & Grid */}
@@ -39,19 +53,19 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       <div className="w-px bg-outline-variant/50"></div>
       <div className="flex flex-col items-center px-sm">
       <span className="font-label-caps text-label-caps text-outline">SCORE</span>
-      <span className="font-headline-md text-headline-md text-primary-fixed">1250</span>
+      <span className="font-headline-md text-headline-md text-primary-fixed">{score}</span>
       </div>
       </div>
       </div>
       <div className="flex items-center gap-lg">
       <div className="flex gap-xs">
-      <Heart  style={{fontVariationSettings: "'FILL' 1"}} className="text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" aria-hidden={true} focusable="false" />
-      <Heart  style={{fontVariationSettings: "'FILL' 1"}} className="text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" aria-hidden={true} focusable="false" />
-      <Heart  style={{fontVariationSettings: "'FILL' 1"}} className="text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" aria-hidden={true} focusable="false" />
+      {Array.from({ length: 3 }, (_, index) => (
+      <Heart key={index} style={{fontVariationSettings: "'FILL' 1"}} className={index < lives ? "text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "text-outline-variant/40 drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]"} aria-hidden={true} focusable="false" />
+      ))}
       </div>
       <div className="flex items-center gap-xs bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-full px-md py-xs">
       <Bolt  style={{fontVariationSettings: "'FILL' 1"}} className="text-tertiary-fixed drop-shadow-[0_0_5px_rgba(183,247,0,0.8)]" aria-hidden={true} focusable="false" />
-      <span className="font-headline-md text-headline-md text-tertiary-fixed">1/3</span>
+      <span className="font-headline-md text-headline-md text-tertiary-fixed">{energy}/100</span>
       </div>
       <div className="flex gap-sm">
       <button className="p-xs text-outline-variant hover:text-primary-fixed hover:drop-shadow-[0_0_8px_rgba(0,220,229,0.6)] transition-colors" type="button" aria-label="Restart Alt" data-action-id="restart-alt-1" onClick={actions?.["restart-alt-1"]}>
@@ -82,23 +96,33 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       <div className="absolute top-1/2 left-1/2 bottom-1/4 w-2 bg-surface-tint/30 rounded-full"></div>
       {/* Moving Hazard */}
       <div className="absolute top-1/3 right-1/4 w-2 h-1/4 bg-error-container neon-glow-magenta rounded-full animate-pulse"></div>
+      {obstaclePositions.map((obstacle, index) => (
+      <div key={`obstacle-${index}`} className="absolute w-2 h-12 bg-error-container neon-glow-magenta rounded-full animate-pulse" style={{ left: laneLeft(obstacle.lane), top: trackTop(obstacle.position) }}></div>
+      ))}
       {/* Collectible Core */}
       <div className="absolute bottom-1/4 left-1/3 w-6 h-6 bg-tertiary-fixed rounded-full drop-shadow-[0_0_15px_rgba(183,247,0,0.8)] animate-bounce flex items-center justify-center">
       <div className="w-3 h-3 bg-white rounded-full"></div>
       </div>
+      {shardPositions.map((shard, index) => (
+      <div key={`shard-${index}`} className="absolute w-6 h-6 bg-tertiary-fixed rounded-full drop-shadow-[0_0_15px_rgba(183,247,0,0.8)] animate-bounce flex items-center justify-center" style={{ left: laneLeft(shard.lane), top: trackTop(shard.position) }}>
+      <div className="w-3 h-3 bg-white rounded-full"></div>
+      </div>
+      ))}
       {/* Exit Portal */}
       <div className="absolute top-1/4 right-1/4 w-12 h-12 border-4 border-dashed border-white rounded-full animate-spin flex items-center justify-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
       <div className="w-6 h-6 bg-white/50 rounded-full blur-sm"></div>
       </div>
       {/* Player Orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-surface-tint rounded-full animate-glow-pulse-cyan flex items-center justify-center z-20 transition-colors duration-300">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-surface-tint rounded-full animate-glow-pulse-cyan flex items-center justify-center z-20 transition-colors duration-300" style={{ left: playerLeft, top: playerTop }}>
       <div className="w-4 h-4 bg-white rounded-full blur-[2px]"></div>
       </div>
       </div>
-      {/* Start Game Overlay (Hidden state represented) */}
-      {/* <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center z-30">
-                      <button className="bg-primary-container text-on-primary-container font-headline-lg text-headline-lg px-xl py-md rounded-full neon-glow-cyan hover:scale-105 transition-transform" type="button" data-action-id="start-game-4" onClick={actions?.["start-game-4"]}>START GAME</button>
-                  </div> */}
+      {/* Start Game Overlay */}
+      {showStartOverlay ? (
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center z-30">
+                      <button className="bg-primary-container text-on-primary-container font-headline-lg text-headline-lg px-xl py-md rounded-full neon-glow-cyan hover:scale-105 transition-transform" type="button" data-action-id="start-game-4" onClick={actions?.["start-game-4"]}>{status === "gameOver" ? "RESTART GAME" : "START GAME"}</button>
+                  </div>
+      ) : null}
       </div>
       </main>
       {/* Bottom Controls (Polarity Toggle) */}

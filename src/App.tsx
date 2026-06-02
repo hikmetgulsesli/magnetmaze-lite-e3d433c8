@@ -6,6 +6,9 @@ import {
   type GameplayMagnetmazeLiteActionId,
 } from './screens';
 import { magnetMazeStore } from './features/magnetmaze-lite/magnetmaze-lite.store';
+import { actPauseGame } from './features/surf-gameplay/act_pause_game';
+import { actRestartGame } from './features/surf-gameplay/act_restart_game';
+import { actStartGame } from './features/surf-gameplay/act_start_game';
 import { installMagnetMazeBridge } from './test/bridge';
 
 export default function App() {
@@ -64,10 +67,10 @@ export default function App() {
 
   const gameplayActions = useMemo<Partial<Record<GameplayMagnetmazeLiteActionId, () => void>>>(
     () => ({
-      'restart-alt-1': magnetMazeStore.actions.restart,
-      'pause-2': magnetMazeStore.actions.togglePause,
+      'restart-alt-1': () => actRestartGame(magnetMazeStore),
+      'pause-2': () => actPauseGame(magnetMazeStore),
       'settings-3': magnetMazeStore.actions.openSettings,
-      'start-game-4': magnetMazeStore.actions.startGame,
+      'start-game-4': () => actStartGame(magnetMazeStore),
     }),
     [],
   );
@@ -87,7 +90,7 @@ export default function App() {
       {state.activeScreen === 'settings' ? (
         <GameSettingsMagnetmazeLite actions={settingsActions} />
       ) : (
-        <GameplayMagnetmazeLite actions={gameplayActions} runtime={state.runtime} />
+        <GameplayMagnetmazeLite actions={gameplayActions} runtime={{ ...state.runtime, status: state.status }} />
       )}
       {state.activeScreen === 'gameplay' && state.status === 'running' ? (
         <div

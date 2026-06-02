@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { createMagnetMazeStore } from '../features/magnetmaze-lite/magnetmaze-lite.store';
+import { actPauseGame } from '../features/surf-gameplay/act_pause_game';
+import { actRestartGame } from '../features/surf-gameplay/act_restart_game';
+import { actStartGame } from '../features/surf-gameplay/act_start_game';
 
 function createThrowingStorage(): Storage {
   return {
@@ -42,6 +45,33 @@ describe('MagnetMaze store persistence', () => {
 });
 
 describe('MagnetMaze store gameplay controls', () => {
+  it('runs surf gameplay action handlers against the store', () => {
+    const store = createMagnetMazeStore();
+
+    actStartGame(store);
+    expect(store.getState()).toMatchObject({
+      activeScreen: 'gameplay',
+      status: 'running',
+      score: 0,
+    });
+
+    actPauseGame(store);
+    expect(store.getState()).toMatchObject({
+      status: 'paused',
+      paused: true,
+    });
+
+    actRestartGame(store);
+    expect(store.getState()).toMatchObject({
+      status: 'running',
+      paused: false,
+      runtime: {
+        energy: 100,
+        lives: 3,
+      },
+    });
+  });
+
   it('only toggles pause during an active or paused game', () => {
     const store = createMagnetMazeStore();
 
