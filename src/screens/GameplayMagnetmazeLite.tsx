@@ -7,6 +7,7 @@
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
+import { useState } from "react";
 import { Bolt, Heart, Pause, RadioTower, RotateCcw, Settings } from "lucide-react";
 
 
@@ -19,6 +20,7 @@ export interface GameplayMagnetmazeLiteProps {
 }
 
 export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeLiteProps) {
+  const [polarity, setPolarity] = useState<"attract" | "repel">("repel");
   const score = runtime?.score ?? 0;
   const energy = runtime?.energy ?? 100;
   const lives = Math.max(0, Math.min(3, runtime?.lives ?? 3));
@@ -129,17 +131,17 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       <div className="absolute bottom-lg left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-sm">
       <span className="font-label-caps text-label-caps text-outline tracking-widest">POLARITY</span>
       {/* Toggle Container */}
-      <div className="relative w-48 h-12 bg-surface-container-highest rounded-full border border-outline-variant/50 p-1 flex cursor-pointer shadow-inner overflow-hidden">
+      <button className="relative w-48 h-12 bg-surface-container-highest rounded-full border border-outline-variant/50 p-1 flex cursor-pointer shadow-inner overflow-hidden" type="button" aria-label={`Toggle polarity, currently ${polarity}`} aria-pressed={polarity === "repel"} onClick={() => setPolarity((current) => current === "repel" ? "attract" : "repel")}>
       {/* Background Indicator (Active State) */}
-      <div className="absolute inset-0 w-1/2 right-0 bg-secondary-container/20 rounded-r-full pointer-events-none transition-colors duration-300"></div>
+      <div className={polarity === "repel" ? "absolute inset-0 w-1/2 right-0 bg-secondary-container/20 rounded-r-full pointer-events-none transition-colors duration-300" : "absolute inset-0 w-1/2 left-0 bg-secondary-container/20 rounded-l-full pointer-events-none transition-colors duration-300"}></div>
       {/* Labels */}
-      <div className="flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-outline">ATTRACT</div>
-      <div className="flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-white font-bold drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]">REPEL</div>
+      <div className={polarity === "attract" ? "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-white font-bold drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-outline"}>ATTRACT</div>
+      <div className={polarity === "repel" ? "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-white font-bold drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-outline"}>REPEL</div>
       {/* Thumb / Puck */}
-      <div className="absolute top-1 right-1 w-[calc(50%-4px)] h-10 bg-secondary-container rounded-full animate-glow-pulse-magenta border border-white/30 z-20 transition-colors duration-300 flex items-center justify-center">
+      <div className={polarity === "repel" ? "absolute top-1 right-1 w-[calc(50%-4px)] h-10 bg-secondary-container rounded-full animate-glow-pulse-magenta border border-white/30 z-20 transition-colors duration-300 flex items-center justify-center" : "absolute top-1 left-1 w-[calc(50%-4px)] h-10 bg-secondary-container rounded-full animate-glow-pulse-magenta border border-white/30 z-20 transition-colors duration-300 flex items-center justify-center"}>
       <RadioTower  style={{fontVariationSettings: "'FILL' 1"}} className="text-white text-sm" aria-hidden={true} focusable="false" />
       </div>
-      </div>
+      </button>
       </div>
     </>
   );
