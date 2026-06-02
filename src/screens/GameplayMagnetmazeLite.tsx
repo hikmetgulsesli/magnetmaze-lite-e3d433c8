@@ -43,33 +43,34 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       <div className="absolute inset-0 grid-bg z-0"></div>
       <div className="absolute inset-0 scanline z-50 pointer-events-none opacity-30"></div>
       {/* TopAppBar HUD */}
-      <header className="bg-transparent flex justify-between items-center px-margin-desktop md:px-margin-desktop px-margin-mobile pt-sm w-full z-50 fixed top-0 w-full flat no shadows">
-      <div className="flex items-center gap-md">
+      <header className="bg-transparent flex justify-between items-start gap-sm px-margin-mobile md:px-margin-desktop pt-sm w-full z-50 fixed top-0 flat no shadows">
+      <div className="flex min-w-0 items-center gap-sm md:gap-md">
       <h1 className="font-display-arcade-mobile text-display-arcade-mobile text-primary-fixed drop-shadow-[0_0_10px_rgba(0,220,229,0.8)] hidden md:block">MAGNETMAZE</h1>
       <h1 className="font-display-arcade-mobile text-headline-lg text-primary-fixed drop-shadow-[0_0_10px_rgba(0,220,229,0.8)] md:hidden">MM</h1>
-      <div className="flex gap-sm ml-lg bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-lg p-sm">
-      <div className="flex flex-col items-center px-sm">
+      <div className="flex min-w-0 gap-xs md:gap-sm md:ml-lg bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-lg p-xs md:p-sm">
+      <div className="flex flex-col items-center px-xs md:px-sm">
       <span className="font-label-caps text-label-caps text-outline">LVL</span>
       <span className="font-headline-md text-headline-md text-primary-fixed">01</span>
       </div>
       <div className="w-px bg-outline-variant/50"></div>
-      <div className="flex flex-col items-center px-sm">
+      <div className="flex min-w-0 flex-col items-center px-xs md:px-sm">
       <span className="font-label-caps text-label-caps text-outline">SCORE</span>
-      <span className="font-headline-md text-headline-md text-primary-fixed">{score}</span>
+      <span className="max-w-16 truncate font-headline-md text-headline-md text-primary-fixed md:max-w-none">{score}</span>
       </div>
       </div>
       </div>
-      <div className="flex items-center gap-lg">
-      <div className="flex gap-xs">
+      <div className="flex min-w-0 flex-col items-end gap-xs md:flex-row md:items-center md:gap-lg">
+      <div className="flex gap-[2px] md:gap-xs">
       {Array.from({ length: 3 }, (_, index) => (
-      <Heart key={index} style={{fontVariationSettings: "'FILL' 1"}} className={index < lives ? "text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "text-outline-variant/40 drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]"} aria-hidden={true} focusable="false" />
+      <Heart key={index} style={{fontVariationSettings: "'FILL' 1"}} className={index < lives ? "h-5 w-5 text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)] md:h-6 md:w-6" : "h-5 w-5 text-outline-variant/40 drop-shadow-[0_0_5px_rgba(255,36,228,0.8)] md:h-6 md:w-6"} aria-hidden={true} focusable="false" />
       ))}
       </div>
-      <div className="flex items-center gap-xs bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-full px-md py-xs">
-      <Bolt  style={{fontVariationSettings: "'FILL' 1"}} className="text-tertiary-fixed drop-shadow-[0_0_5px_rgba(183,247,0,0.8)]" aria-hidden={true} focusable="false" />
-      <span className="font-headline-md text-headline-md text-tertiary-fixed">{energy}/100</span>
+      <div className="flex items-center gap-xs bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-full px-sm py-xs md:px-md">
+      <Bolt  style={{fontVariationSettings: "'FILL' 1"}} className="h-5 w-5 text-tertiary-fixed drop-shadow-[0_0_5px_rgba(183,247,0,0.8)] md:h-6 md:w-6" aria-hidden={true} focusable="false" />
+      <span className="font-headline-md text-headline-md text-tertiary-fixed">{energy}</span>
+      <span className="hidden font-headline-md text-headline-md text-tertiary-fixed sm:inline">/100</span>
       </div>
-      <div className="flex gap-sm">
+      <div className="flex gap-xs md:gap-sm">
       <button className="p-xs text-outline-variant hover:text-primary-fixed hover:drop-shadow-[0_0_8px_rgba(0,220,229,0.6)] transition-colors" type="button" aria-label="Restart Alt" data-action-id="restart-alt-1" onClick={actions?.["restart-alt-1"]}>
       <RotateCcw aria-hidden={true} focusable="false" />
       </button>
@@ -128,12 +129,12 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       </div>
       </main>
       {/* Bottom Controls (Polarity Toggle) */}
-      <div className="absolute bottom-lg left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-sm">
+      <div className="absolute bottom-lg left-1/2 z-50 flex w-[min(12rem,calc(100vw-2rem))] -translate-x-1/2 flex-col items-center gap-sm">
       <span className="font-label-caps text-label-caps text-outline tracking-widest">POLARITY</span>
       {/* Toggle Container */}
-      <button className="relative w-48 h-12 bg-surface-container-highest rounded-full border border-outline-variant/50 p-1 flex cursor-pointer shadow-inner overflow-hidden" type="button" aria-label={`Toggle polarity, currently ${polarity}`} aria-pressed={polarity === "repel"} onClick={() => setPolarity((current) => current === "repel" ? "attract" : "repel")}>
+      <button className="relative h-12 w-full bg-surface-container-highest rounded-full border border-outline-variant/50 p-1 flex cursor-pointer shadow-inner overflow-hidden" type="button" aria-label={`Toggle polarity, currently ${polarity}`} aria-pressed={polarity === "repel"} onClick={() => setPolarity((current) => current === "repel" ? "attract" : "repel")}>
       {/* Background Indicator (Active State) */}
-      <div className={polarity === "repel" ? "absolute inset-0 w-1/2 right-0 bg-secondary-container/20 rounded-r-full pointer-events-none transition-colors duration-300" : "absolute inset-0 w-1/2 left-0 bg-secondary-container/20 rounded-l-full pointer-events-none transition-colors duration-300"}></div>
+      <div className={polarity === "repel" ? "absolute inset-y-0 right-0 w-1/2 bg-secondary-container/20 rounded-r-full pointer-events-none transition-colors duration-300" : "absolute inset-y-0 left-0 w-1/2 bg-secondary-container/20 rounded-l-full pointer-events-none transition-colors duration-300"}></div>
       {/* Labels */}
       <div className={polarity === "attract" ? "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-white font-bold drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-outline"}>ATTRACT</div>
       <div className={polarity === "repel" ? "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-white font-bold drop-shadow-[0_0_5px_rgba(255,36,228,0.8)]" : "flex-1 flex items-center justify-center z-10 font-label-caps text-label-caps text-outline"}>REPEL</div>
