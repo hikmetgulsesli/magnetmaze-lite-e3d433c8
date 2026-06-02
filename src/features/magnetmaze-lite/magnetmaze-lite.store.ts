@@ -91,8 +91,10 @@ export function createMagnetMazeStore() {
         highScore: state.highScore,
         level: state.level,
       });
+      return true;
     } catch {
       setState({ ...state, storageStatus: 'unavailable', lastError: 'Game progress could not be saved.' });
+      return false;
     }
   };
 
@@ -156,8 +158,12 @@ export function createMagnetMazeStore() {
       });
     },
     saveSettings() {
-      persist();
-      setState({ ...state, activeScreen: 'gameplay', lastError: null, storageStatus: 'ready' });
+      if (persist()) {
+        setState({ ...state, activeScreen: 'gameplay', lastError: null, storageStatus: 'ready' });
+        return;
+      }
+
+      setState({ ...state, activeScreen: 'gameplay' });
     },
     moveLeft() {
       setState({ ...state, runtime: movePlayer(state.runtime, -1) });
