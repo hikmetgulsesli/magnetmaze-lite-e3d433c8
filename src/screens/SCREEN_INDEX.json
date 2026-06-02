@@ -1,0 +1,72 @@
+[
+  {
+    "screenId": "8e0fa56e6f1a464f8e6187bc66ac5716",
+    "title": "Game Settings - MagnetMaze Lite",
+    "componentName": "GameSettingsMagnetmazeLite",
+    "file": "src/screens/GameSettingsMagnetmazeLite.tsx",
+    "buttons": 4,
+    "inputs": 5,
+    "links": 0,
+    "actions": [
+      {
+        "id": "close-settings-1",
+        "kind": "button",
+        "label": "Close Settings",
+        "index": 0
+      },
+      {
+        "id": "reset-to-defaults-2",
+        "kind": "button",
+        "label": "RESET TO DEFAULTS",
+        "index": 1
+      },
+      {
+        "id": "return-to-game-3",
+        "kind": "button",
+        "label": "RETURN TO GAME",
+        "index": 2
+      },
+      {
+        "id": "save-changes-4",
+        "kind": "button",
+        "label": "SAVE CHANGES",
+        "index": 3
+      }
+    ]
+  },
+  {
+    "screenId": "b1d58f9dac9746d78cd567cea94e2f7f",
+    "title": "Gameplay - MagnetMaze Lite",
+    "componentName": "GameplayMagnetmazeLite",
+    "file": "src/screens/GameplayMagnetmazeLite.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 0,
+    "actions": [
+      {
+        "id": "restart-alt-1",
+        "kind": "button",
+        "label": "Restart Alt",
+        "index": 0
+      },
+      {
+        "id": "pause-2",
+        "kind": "button",
+        "label": "Pause",
+        "index": 1
+      },
+      {
+        "id": "settings-3",
+        "kind": "button",
+        "label": "Settings",
+        "index": 2
+      },
+      {
+        "id": "start-game-4",
+        "kind": "button",
+        "label": "START GAME",
+        "index": 3
+      }
+    ]
+  }
+]
