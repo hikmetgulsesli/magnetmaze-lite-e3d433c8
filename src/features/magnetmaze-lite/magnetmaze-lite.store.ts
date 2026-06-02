@@ -135,6 +135,10 @@ export function createMagnetMazeStore() {
       actions.startGame();
     },
     togglePause() {
+      if (state.status !== 'running' && state.status !== 'paused') {
+        return;
+      }
+
       const paused = !state.paused;
       setState({
         ...state,
