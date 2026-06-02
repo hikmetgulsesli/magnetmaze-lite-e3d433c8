@@ -90,7 +90,7 @@ export default function App() {
       {state.activeScreen === 'settings' ? (
         <GameSettingsMagnetmazeLite actions={settingsActions} />
       ) : (
-        <GameplayMagnetmazeLite actions={gameplayActions} runtime={state.runtime} />
+        <GameplayMagnetmazeLite actions={gameplayActions} runtime={{ ...state.runtime, status: state.status }} />
       )}
       {state.activeScreen === 'gameplay' && state.status === 'running' ? (
         <div

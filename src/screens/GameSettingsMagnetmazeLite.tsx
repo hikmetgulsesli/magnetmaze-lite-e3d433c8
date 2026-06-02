@@ -8,6 +8,7 @@
 // 4. Replace placeholder data with props/state
 
 import { AudioWaveform, Gauge, Keyboard, Music, Volume1, Volume2, X, Zap } from "lucide-react";
+import { useState } from "react";
 
 
 export type GameSettingsMagnetmazeLiteActionId = "close-settings-1" | "reset-to-defaults-2" | "return-to-game-3" | "save-changes-4";
@@ -18,6 +19,26 @@ export interface GameSettingsMagnetmazeLiteProps {
 }
 
 export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLiteProps) {
+  const [simulationSpeed, setSimulationSpeed] = useState(100);
+  const [difficulty, setDifficulty] = useState(3);
+  const [masterVolume, setMasterVolume] = useState(80);
+  const [musicEnabled, setMusicEnabled] = useState(true);
+  const [sfxEnabled, setSfxEnabled] = useState(true);
+  const difficultyLabel = ["Casual", "Normal", "Arcade", "Hardcore"][difficulty - 1] ?? "Arcade";
+
+  const handleResetToDefaults = () => {
+    setSimulationSpeed(100);
+    setDifficulty(3);
+    setMasterVolume(80);
+    setMusicEnabled(true);
+    setSfxEnabled(true);
+    actions?.["reset-to-defaults-2"]?.();
+  };
+
+  const handleSaveChanges = () => {
+    actions?.["save-changes-4"]?.();
+  };
+
   return (
     <>
       {/* Gameplay Background Simulation (Blurred) */}
@@ -55,9 +76,9 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       <div className="bg-surface-container-low/50 border border-outline-variant/20 rounded-lg p-md space-y-md relative group hover:border-outline-variant/50 transition-colors">
       <div className="flex justify-between items-center">
       <span className="font-body-lg text-body-lg text-on-surface">Simulation Speed</span>
-      <span className="font-label-caps text-label-caps text-primary-fixed bg-primary-fixed/10 px-2 py-1 rounded">100%</span>
+      <span className="font-label-caps text-label-caps text-primary-fixed bg-primary-fixed/10 px-2 py-1 rounded">{simulationSpeed}%</span>
       </div>
-      <input className="w-full h-2 rounded-full outline-none" max="125" min="75" type="range" defaultValue="100" />
+      <input className="w-full h-2 rounded-full outline-none" max="125" min="75" type="range" value={simulationSpeed} onChange={(event) => setSimulationSpeed(Number(event.currentTarget.value))} aria-label="Simulation Speed" />
       <div className="flex justify-between font-label-caps text-label-caps text-outline text-[10px]">
       <span>75%</span>
       <span>100%</span>
@@ -67,9 +88,9 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       <div className="bg-surface-container-low/50 border border-outline-variant/20 rounded-lg p-md space-y-md relative group hover:border-outline-variant/50 transition-colors">
       <div className="flex justify-between items-center">
       <span className="font-body-lg text-body-lg text-on-surface">Difficulty Protocol</span>
-      <span className="font-label-caps text-label-caps text-secondary-container bg-secondary-container/10 px-2 py-1 rounded">Arcade</span>
+      <span className="font-label-caps text-label-caps text-secondary-container bg-secondary-container/10 px-2 py-1 rounded">{difficultyLabel}</span>
       </div>
-      <input className="w-full h-2 rounded-full outline-none" max="4" min="1" type="range" defaultValue="3" />
+      <input className="w-full h-2 rounded-full outline-none" max="4" min="1" type="range" value={difficulty} onChange={(event) => setDifficulty(Number(event.currentTarget.value))} aria-label="Difficulty Protocol" />
       <div className="flex justify-between font-label-caps text-label-caps text-outline text-[10px]">
       <span>Casual</span>
       <span>Normal</span>
@@ -89,11 +110,11 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       <div className="space-y-sm">
       <div className="flex justify-between items-center">
       <span className="font-body-lg text-body-lg text-on-surface">Master Output</span>
-      <span className="font-label-caps text-label-caps text-primary-fixed">80%</span>
+      <span className="font-label-caps text-label-caps text-primary-fixed">{masterVolume}%</span>
       </div>
       <div className="flex items-center gap-sm">
       <Volume1 className="text-outline text-[16px]" aria-hidden={true} focusable="false" />
-      <input className="w-full h-2 rounded-full outline-none" max="100" min="0" type="range" defaultValue="80" />
+      <input className="w-full h-2 rounded-full outline-none" max="100" min="0" type="range" value={masterVolume} onChange={(event) => setMasterVolume(Number(event.currentTarget.value))} aria-label="Master Output" />
       <Volume2 className="text-outline text-[16px]" aria-hidden={true} focusable="false" />
       </div>
       </div>
@@ -102,9 +123,9 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       <span className="font-body-lg text-body-lg text-on-surface flex items-center gap-2">
       <Music className="text-outline text-[18px]" aria-hidden={true} focusable="false" />
                                       Background Synth
-                                  </span>
+      </span>
       <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-      <input defaultChecked={true} className="toggle-checkbox absolute block w-5 h-5 rounded-sm bg-white border-4 appearance-none cursor-pointer z-10 right-0 border-primary-fixed" id="music-toggle" name="toggle" type="checkbox" />
+      <input checked={musicEnabled} className="toggle-checkbox absolute block w-5 h-5 rounded-sm bg-white border-4 appearance-none cursor-pointer z-10 right-0 border-primary-fixed" id="music-toggle" name="toggle" type="checkbox" onChange={(event) => setMusicEnabled(event.currentTarget.checked)} aria-label="Background Synth" />
       <label className="toggle-label block overflow-hidden h-5 rounded-sm bg-primary-fixed-dim cursor-pointer box-shadow-inner" htmlFor="music-toggle"></label>
       </div>
       </div>
@@ -112,9 +133,9 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       <span className="font-body-lg text-body-lg text-on-surface flex items-center gap-2">
       <Zap className="text-outline text-[18px]" aria-hidden={true} focusable="false" />
                                       Kinetic SFX
-                                  </span>
+      </span>
       <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-      <input defaultChecked={true} className="toggle-checkbox absolute block w-5 h-5 rounded-sm bg-white border-4 appearance-none cursor-pointer z-10 right-0 border-primary-fixed" id="sfx-toggle" name="toggle" type="checkbox" />
+      <input checked={sfxEnabled} className="toggle-checkbox absolute block w-5 h-5 rounded-sm bg-white border-4 appearance-none cursor-pointer z-10 right-0 border-primary-fixed" id="sfx-toggle" name="toggle" type="checkbox" onChange={(event) => setSfxEnabled(event.currentTarget.checked)} aria-label="Kinetic SFX" />
       <label className="toggle-label block overflow-hidden h-5 rounded-sm bg-primary-fixed-dim cursor-pointer box-shadow-inner" htmlFor="sfx-toggle"></label>
       </div>
       </div>
@@ -149,12 +170,12 @@ export function GameSettingsMagnetmazeLite({ actions }: GameSettingsMagnetmazeLi
       </div>
       {/* Footer Actions */}
       <div className="px-lg py-md border-t border-outline-variant/20 bg-surface-container-highest/40 flex flex-col sm:flex-row justify-between items-center gap-md">
-      <button className="font-label-caps text-label-caps text-outline hover:text-on-surface transition-colors order-3 sm:order-1 underline decoration-outline-variant underline-offset-4" type="button" data-action-id="reset-to-defaults-2" onClick={actions?.["reset-to-defaults-2"]}>RESET TO DEFAULTS</button>
+      <button className="font-label-caps text-label-caps text-outline hover:text-on-surface transition-colors order-3 sm:order-1 underline decoration-outline-variant underline-offset-4" type="button" data-action-id="reset-to-defaults-2" onClick={handleResetToDefaults}>RESET TO DEFAULTS</button>
       <div className="flex gap-md order-1 sm:order-2 w-full sm:w-auto">
       <button className="flex-1 sm:flex-none border-2 border-outline-variant text-on-surface font-label-caps text-label-caps px-lg py-sm rounded hover:border-primary-fixed hover:text-primary-fixed transition-colors" type="button" data-action-id="return-to-game-3" onClick={actions?.["return-to-game-3"]}>
                               RETURN TO GAME
                           </button>
-      <button className="flex-1 sm:flex-none bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps px-lg py-sm rounded neon-glow-primary hover:bg-primary-fixed-dim hover:scale-[1.02] active:scale-95 transition-colors" type="button" data-action-id="save-changes-4" onClick={actions?.["save-changes-4"]}>
+      <button className="flex-1 sm:flex-none bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps px-lg py-sm rounded neon-glow-primary hover:bg-primary-fixed-dim hover:scale-[1.02] active:scale-95 transition-colors" type="button" data-action-id="save-changes-4" onClick={handleSaveChanges}>
                               SAVE CHANGES
                           </button>
       </div>
