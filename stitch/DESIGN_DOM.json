@@ -1,0 +1,479 @@
+{
+  "generatedAt": "2026-06-02T20:08:56.296Z",
+  "screenCount": 2,
+  "screens": {
+    "8e0fa56e6f1a464f8e6187bc66ac5716": {
+      "screenId": "8e0fa56e6f1a464f8e6187bc66ac5716",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "section",
+          "layout": "block",
+          "classes": [
+            "space-y-md"
+          ],
+          "childCount": 7
+        },
+        {
+          "tag": "section",
+          "layout": "block",
+          "classes": [
+            "space-y-md"
+          ],
+          "childCount": 9
+        },
+        {
+          "tag": "section",
+          "layout": "block",
+          "classes": [
+            "space-y-md"
+          ],
+          "childCount": 6
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Close Settings",
+          "classes": [
+            "text-outline",
+            "hover:text-primary-fixed",
+            "transition-colors"
+          ],
+          "icon": "close",
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "RESET TO DEFAULTS",
+          "classes": [
+            "font-label-caps",
+            "text-label-caps",
+            "text-outline",
+            "hover:text-on-surface",
+            "transition-colors",
+            "order-3",
+            "sm:order-1",
+            "underline",
+            "decoration-outline-variant",
+            "underline-offset-4"
+          ],
+          "icon": null,
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "RETURN TO GAME",
+          "classes": [
+            "flex-1",
+            "sm:flex-none",
+            "border-2",
+            "border-outline-variant",
+            "text-on-surface",
+            "font-label-caps",
+            "text-label-caps",
+            "px-lg",
+            "py-sm",
+            "rounded",
+            "hover:border-primary-fixed",
+            "hover:text-primary-fixed",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SAVE CHANGES",
+          "classes": [
+            "flex-1",
+            "sm:flex-none",
+            "bg-primary-fixed",
+            "text-on-primary-fixed",
+            "font-label-caps",
+            "text-label-caps",
+            "px-lg",
+            "py-sm",
+            "rounded",
+            "neon-glow-primary",
+            "hover:bg-primary-fixed-dim",
+            "hover:scale-[1.02]",
+            "active:scale-95",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "range",
+          "label": "range",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "w-full",
+            "h-2",
+            "rounded-full",
+            "outline-none"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "checkbox",
+          "label": "toggle",
+          "placeholder": "",
+          "name": "toggle",
+          "classes": [
+            "toggle-checkbox",
+            "absolute",
+            "block",
+            "w-5",
+            "h-5",
+            "rounded-sm",
+            "bg-white",
+            "border-4",
+            "appearance-none",
+            "cursor-pointer",
+            "z-10",
+            "right-0",
+            "border-primary-fixed"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "close",
+        "speed",
+        "graphic_eq",
+        "volume_down",
+        "volume_up",
+        "music_note",
+        "electric_bolt",
+        "keyboard"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "surface-tint": "#00dce5",
+        "on-primary-container": "#006c71",
+        "on-error-container": "#ffdad6",
+        "on-primary-fixed": "#002021",
+        "tertiary": "#f3ffd4",
+        "on-surface-variant": "#b9caca",
+        "primary-container": "#00f5ff",
+        "inverse-primary": "#00696e",
+        "on-secondary-fixed-variant": "#840076",
+        "outline": "#849495",
+        "tertiary-container": "#b3f100",
+        "background": "#12131c",
+        "surface-dim": "#12131c",
+        "surface-container": "#1e1f29",
+        "primary-fixed": "#63f7ff",
+        "on-surface": "#e3e1ef",
+        "on-error": "#690005",
+        "secondary-fixed-dim": "#fface8",
+        "error-container": "#93000a",
+        "surface-container-high": "#282933",
+        "secondary": "#fface8",
+        "on-secondary-container": "#520049",
+        "surface-container-highest": "#33343e",
+        "surface-container-low": "#1a1b24",
+        "on-tertiary": "#253600",
+        "inverse-on-surface": "#2f303a",
+        "inverse-surface": "#e3e1ef",
+        "on-tertiary-fixed-variant": "#374e00",
+        "on-background": "#e3e1ef",
+        "on-secondary": "#5e0053",
+        "primary-fixed-dim": "#00dce5",
+        "on-secondary-fixed": "#3a0033",
+        "secondary-fixed": "#ffd7f0",
+        "surface": "#12131c",
+        "error": "#ffb4ab",
+        "outline-variant": "#3a494a",
+        "on-tertiary-fixed": "#141f00",
+        "primary": "#e9feff",
+        "on-primary": "#003739",
+        "surface-container-lowest": "#0d0e17",
+        "on-primary-fixed-variant": "#004f53",
+        "on-tertiary-container": "#4d6a00",
+        "tertiary-fixed": "#b7f700",
+        "secondary-container": "#ff24e4",
+        "surface-bright": "#383843",
+        "tertiary-fixed-dim": "#a0d800",
+        "surface-variant": "#33343e"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "Sora",
+        "Space Grotesk"
+      ],
+      "layoutHints": {
+        "gridCols": 2,
+        "flexDirection": "col",
+        "gap": "2"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "Close Settings",
+          "icon": "close",
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "RESET TO DEFAULTS",
+          "icon": null,
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "RETURN TO GAME",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SAVE CHANGES",
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "input",
+          "label": "range",
+          "type": "range",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "toggle",
+          "type": "checkbox",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [],
+      "title": "Game Settings - MagnetMaze Lite"
+    },
+    "b1d58f9dac9746d78cd567cea94e2f7f": {
+      "screenId": "b1d58f9dac9746d78cd567cea94e2f7f",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "bg-transparent",
+            "flex",
+            "justify-between",
+            "items-center",
+            "px-margin-desktop",
+            "md:px-margin-desktop",
+            "px-margin-mobile",
+            "pt-sm",
+            "w-full",
+            "z-50"
+          ],
+          "childCount": 9
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "absolute",
+            "inset-0",
+            "flex",
+            "items-center",
+            "justify-center",
+            "z-10",
+            "pt-xl"
+          ],
+          "childCount": 16
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "restart_alt",
+          "classes": [
+            "p-xs",
+            "text-outline-variant",
+            "hover:text-primary-fixed",
+            "hover:drop-shadow-[0_0_8px_rgba(0,220,229,0.6)]",
+            "transition-all"
+          ],
+          "icon": "restart_alt",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "pause",
+          "classes": [
+            "p-xs",
+            "text-outline-variant",
+            "hover:text-primary-fixed",
+            "hover:drop-shadow-[0_0_8px_rgba(0,220,229,0.6)]",
+            "transition-all"
+          ],
+          "icon": "pause",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "classes": [
+            "p-xs",
+            "text-outline-variant",
+            "hover:text-primary-fixed",
+            "hover:drop-shadow-[0_0_8px_rgba(0,220,229,0.6)]",
+            "transition-all"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/settings",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "START GAME",
+          "classes": [
+            "bg-primary-container",
+            "text-on-primary-container",
+            "font-headline-lg",
+            "text-headline-lg",
+            "px-xl",
+            "py-md",
+            "rounded-full",
+            "neon-glow-cyan",
+            "hover:scale-105",
+            "transition-transform"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "favorite",
+        "bolt",
+        "restart_alt",
+        "pause",
+        "settings",
+        "wifi_tethering"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "surface-tint": "#00dce5",
+        "on-primary-container": "#006c71",
+        "on-error-container": "#ffdad6",
+        "on-primary-fixed": "#002021",
+        "tertiary": "#f3ffd4",
+        "on-surface-variant": "#b9caca",
+        "primary-container": "#00f5ff",
+        "inverse-primary": "#00696e",
+        "on-secondary-fixed-variant": "#840076",
+        "outline": "#849495",
+        "tertiary-container": "#b3f100",
+        "background": "#12131c",
+        "surface-dim": "#12131c",
+        "surface-container": "#1e1f29",
+        "primary-fixed": "#63f7ff",
+        "on-surface": "#e3e1ef",
+        "on-error": "#690005",
+        "secondary-fixed-dim": "#fface8",
+        "error-container": "#93000a",
+        "surface-container-high": "#282933",
+        "secondary": "#fface8",
+        "on-secondary-container": "#520049",
+        "surface-container-highest": "#33343e",
+        "surface-container-low": "#1a1b24",
+        "on-tertiary": "#253600",
+        "inverse-on-surface": "#2f303a",
+        "inverse-surface": "#e3e1ef",
+        "on-tertiary-fixed-variant": "#374e00",
+        "on-background": "#e3e1ef",
+        "on-secondary": "#5e0053",
+        "primary-fixed-dim": "#00dce5",
+        "on-secondary-fixed": "#3a0033",
+        "secondary-fixed": "#ffd7f0",
+        "surface": "#12131c",
+        "error": "#ffb4ab",
+        "outline-variant": "#3a494a",
+        "on-tertiary-fixed": "#141f00",
+        "primary": "#e9feff",
+        "on-primary": "#003739",
+        "surface-container-lowest": "#0d0e17",
+        "on-primary-fixed-variant": "#004f53",
+        "on-tertiary-container": "#4d6a00",
+        "tertiary-fixed": "#b7f700",
+        "secondary-container": "#ff24e4",
+        "surface-bright": "#383843",
+        "tertiary-fixed-dim": "#a0d800",
+        "surface-variant": "#33343e"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "Inter",
+        "Sora",
+        "Space Grotesk"
+      ],
+      "layoutHints": {
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "restart_alt",
+          "icon": "restart_alt",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "pause",
+          "icon": "pause",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "icon": "settings",
+          "action": "navigate",
+          "route": "/settings",
+          "expectedBehavior": "navigate:/settings"
+        },
+        {
+          "kind": "button",
+          "label": "START GAME",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "tabBar": [],
+      "title": "Gameplay - MagnetMaze Lite"
+    }
+  }
+}

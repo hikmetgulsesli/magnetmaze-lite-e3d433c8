@@ -1,0 +1,24 @@
+[
+  {
+    "screenId": "8e0fa56e6f1a464f8e6187bc66ac5716",
+    "title": "Game Settings - MagnetMaze Lite",
+    "htmlFile": "8e0fa56e6f1a464f8e6187bc66ac5716.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzNiNjVhY2U4ZTk4NTRlZmQ5YjdiZDFmODE0MDIxNDIyEgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzMyMzk2MTA4MDA3MDc3Mzg1&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/magnetmaze-lite-e3d433c8/stitch/8e0fa56e6f1a464f8e6187bc66ac5716.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "b1d58f9dac9746d78cd567cea94e2f7f",
+    "title": "Gameplay - MagnetMaze Lite",
+    "htmlFile": "b1d58f9dac9746d78cd567cea94e2f7f.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2MwZjJkN2YwOTgwMjQxOGZhZDcwMjQxNzlmMTVkODdjEgsSBxCN19Wi9xcYAZIBIwoKcHJvamVjdF9pZBIVQhM2NzMyMzk2MTA4MDA3MDc3Mzg1&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/magnetmaze-lite-e3d433c8/stitch/b1d58f9dac9746d78cd567cea94e2f7f.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  }
+]

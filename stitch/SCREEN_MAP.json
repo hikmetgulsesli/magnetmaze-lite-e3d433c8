@@ -1,0 +1,20 @@
+[
+  {
+    "screenId": "8e0fa56e6f1a464f8e6187bc66ac5716",
+    "name": "Game Settings - MagnetMaze Lite",
+    "type": "settings",
+    "description": "Game Settings - MagnetMaze Lite screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  },
+  {
+    "screenId": "b1d58f9dac9746d78cd567cea94e2f7f",
+    "name": "Gameplay - MagnetMaze Lite",
+    "type": "game",
+    "description": "Gameplay - MagnetMaze Lite screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  }
+]
