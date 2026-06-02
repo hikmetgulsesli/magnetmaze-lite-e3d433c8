@@ -95,12 +95,12 @@ export default function App() {
       {state.activeScreen === 'gameplay' && state.status === 'running' ? (
         <div
           aria-label="Gameplay touch controls"
-          className="fixed bottom-24 left-1/2 z-30 flex -translate-x-1/2 gap-sm rounded-full border border-outline-variant/50 bg-background/80 p-sm shadow-lg md:hidden"
+          className="fixed bottom-24 left-1/2 z-30 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap justify-center gap-sm rounded-full border border-outline-variant/50 bg-background/80 p-sm shadow-lg md:hidden"
         >
           <button
             type="button"
             aria-label="Move left"
-            className="rounded-full bg-primary-fixed px-md py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
+            className="rounded-full bg-primary-fixed px-sm py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
             onClick={magnetMazeStore.actions.moveLeft}
           >
             Left
@@ -108,7 +108,7 @@ export default function App() {
           <button
             type="button"
             aria-label="Move right"
-            className="rounded-full bg-primary-fixed px-md py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
+            className="rounded-full bg-primary-fixed px-sm py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
             onClick={magnetMazeStore.actions.moveRight}
           >
             Right

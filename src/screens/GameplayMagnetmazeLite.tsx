@@ -43,8 +43,8 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       <div className="absolute inset-0 grid-bg z-0"></div>
       <div className="absolute inset-0 scanline z-50 pointer-events-none opacity-30"></div>
       {/* TopAppBar HUD */}
-      <header className="bg-transparent flex justify-between items-start gap-sm px-margin-mobile md:px-margin-desktop pt-sm w-full z-50 fixed top-0 flat no shadows">
-      <div className="flex min-w-0 items-center gap-sm md:gap-md">
+      <header className="bg-transparent box-border flex max-w-full flex-wrap justify-between items-start gap-xs px-margin-mobile md:px-margin-desktop pt-sm w-full overflow-hidden z-50 fixed top-0 flat no shadows md:gap-sm">
+      <div className="flex min-w-0 max-w-[58vw] items-center gap-xs md:max-w-none md:gap-md">
       <h1 className="font-display-arcade-mobile text-display-arcade-mobile text-primary-fixed drop-shadow-[0_0_10px_rgba(0,220,229,0.8)] hidden md:block">MAGNETMAZE</h1>
       <h1 className="font-display-arcade-mobile text-headline-lg text-primary-fixed drop-shadow-[0_0_10px_rgba(0,220,229,0.8)] md:hidden">MM</h1>
       <div className="flex min-w-0 gap-xs md:gap-sm md:ml-lg bg-surface-container/20 backdrop-blur-xl border border-outline-variant/30 rounded-lg p-xs md:p-sm">
@@ -59,7 +59,7 @@ export function GameplayMagnetmazeLite({ actions, runtime }: GameplayMagnetmazeL
       </div>
       </div>
       </div>
-      <div className="flex min-w-0 flex-col items-end gap-xs md:flex-row md:items-center md:gap-lg">
+      <div className="flex min-w-0 max-w-[38vw] shrink-0 flex-col items-end gap-xs md:max-w-none md:flex-row md:items-center md:gap-lg">
       <div className="flex gap-[2px] md:gap-xs">
       {Array.from({ length: 3 }, (_, index) => (
       <Heart key={index} style={{fontVariationSettings: "'FILL' 1"}} className={index < lives ? "h-5 w-5 text-secondary-container drop-shadow-[0_0_5px_rgba(255,36,228,0.8)] md:h-6 md:w-6" : "h-5 w-5 text-outline-variant/40 drop-shadow-[0_0_5px_rgba(255,36,228,0.8)] md:h-6 md:w-6"} aria-hidden={true} focusable="false" />
