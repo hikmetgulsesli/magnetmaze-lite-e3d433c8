@@ -86,7 +86,7 @@ export default function App() {
   );
 
   return (
-    <div data-setfarm-root data-testid="setfarm-app-root">
+    <div className="relative min-h-screen overflow-hidden bg-background" data-setfarm-root data-testid="setfarm-app-root">
       {state.activeScreen === 'settings' ? (
         <GameSettingsMagnetmazeLite actions={settingsActions} />
       ) : (
