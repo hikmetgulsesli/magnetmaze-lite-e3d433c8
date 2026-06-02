@@ -6,6 +6,9 @@ import {
   type GameplayMagnetmazeLiteActionId,
 } from './screens';
 import { magnetMazeStore } from './features/magnetmaze-lite/magnetmaze-lite.store';
+import { actPauseGame } from './features/surf-gameplay/act_pause_game';
+import { actRestartGame } from './features/surf-gameplay/act_restart_game';
+import { actStartGame } from './features/surf-gameplay/act_start_game';
 import { installMagnetMazeBridge } from './test/bridge';
 
 export default function App() {
@@ -64,10 +67,10 @@ export default function App() {
 
   const gameplayActions = useMemo<Partial<Record<GameplayMagnetmazeLiteActionId, () => void>>>(
     () => ({
-      'restart-alt-1': magnetMazeStore.actions.restart,
-      'pause-2': magnetMazeStore.actions.togglePause,
+      'restart-alt-1': () => actRestartGame(magnetMazeStore),
+      'pause-2': () => actPauseGame(magnetMazeStore),
       'settings-3': magnetMazeStore.actions.openSettings,
-      'start-game-4': magnetMazeStore.actions.startGame,
+      'start-game-4': () => actStartGame(magnetMazeStore),
     }),
     [],
   );
@@ -83,21 +86,21 @@ export default function App() {
   );
 
   return (
-    <div data-setfarm-root data-testid="setfarm-app-root">
+    <div className="relative min-h-screen overflow-hidden bg-background" data-setfarm-root data-testid="setfarm-app-root">
       {state.activeScreen === 'settings' ? (
         <GameSettingsMagnetmazeLite actions={settingsActions} />
       ) : (
-        <GameplayMagnetmazeLite actions={gameplayActions} runtime={state.runtime} />
+        <GameplayMagnetmazeLite actions={gameplayActions} runtime={{ ...state.runtime, status: state.status }} />
       )}
       {state.activeScreen === 'gameplay' && state.status === 'running' ? (
         <div
           aria-label="Gameplay touch controls"
-          className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 gap-md rounded-full border border-outline-variant/50 bg-background/80 p-sm shadow-lg"
+          className="fixed bottom-24 left-1/2 z-30 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap justify-center gap-sm rounded-full border border-outline-variant/50 bg-background/80 p-sm shadow-lg md:hidden"
         >
           <button
             type="button"
             aria-label="Move left"
-            className="rounded-full bg-primary-fixed px-lg py-md font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
+            className="rounded-full bg-primary-fixed px-sm py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
             onClick={magnetMazeStore.actions.moveLeft}
           >
             Left
@@ -105,7 +108,7 @@ export default function App() {
           <button
             type="button"
             aria-label="Move right"
-            className="rounded-full bg-primary-fixed px-lg py-md font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
+            className="rounded-full bg-primary-fixed px-sm py-sm font-label-caps text-on-primary-fixed shadow-sm hover:bg-primary-fixed-dim"
             onClick={magnetMazeStore.actions.moveRight}
           >
             Right
